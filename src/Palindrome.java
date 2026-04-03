@@ -1,8 +1,36 @@
+       import java.util.Scanner;
 public class Palindrome {
     
-        // TODO: Read the string
-        // TODO: Convert to lower case (to handle 'Malayalam' correctly)
-        // TODO: Check if the string is the same reversed
-        // TODO: Print "1" if palindrome, "0" if not
-    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        if (!sc.hasNext()) return;
+        String s = sc.next();
+        
+        // Convert to lowercase to handle case-insensitivity (like Malayalam)
+        String lowerS = s.toLowerCase();
+        
+        if (isPalindrome(lowerS)) {
+            System.out.println(1);
+        } else {
+            System.out.println(0);
+        }
+        
+        sc.close();
+    }
+
+    public static boolean isPalindrome(String str) {
+        int left = 0;
+        int right = str.length() - 1;
+
+        while (left < right) {
+            // If characters at both ends don't match, it's not a palindrome
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
 }
